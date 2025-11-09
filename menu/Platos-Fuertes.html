@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platos Fuertes | Menú Digital</title>
+  <link rel="icon" type="image/png" href="../img/icono.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+  </script>
+</head>
+<body>
+  <header id="main-header">
+    <a href="../index.html" class="header-left">
+      <img src="../img/icono.png" alt="Logo Quindú" class="logo-img-large" />
+    </a>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <nav id="side-menu" class="side-menu">
+    <a href="Entradas.html" onclick="if(location.pathname.includes('Entradas.html')) location.reload()">
+      <img src="../img/entradas.png" alt="Entradas" />
+      Entradas
+    </a>
+    <a href="Platos-Fuertes.html">
+      <img src="../img/plato-fuerte.png" alt="Platos Fuertes" />
+      Platos Fuertes
+    </a>
+    <a href="Postres.html">
+      <img src="../img/postres.png" alt="Postres" />
+      Postres
+    </a>
+    <a href="Bebidas.html">
+      <img src="../img/bebidas.png" alt="Bebidas" />
+      Bebidas
+    </a>
+  </nav>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    console.log("Botón scrollTopBtn cargado:", scrollBtn);
+
+    function checkScroll() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      console.log("ScrollY:", scrollY);
+      if (scrollY > 200) {
+        scrollBtn.style.display = "block";
+        console.log("Botón mostrado");
+      } else {
+        scrollBtn.style.display = "none";
+        console.log("Botón ocultado");
+      }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    window.addEventListener("load", checkScroll); // por si ya hay scroll al cargar
+
+    scrollBtn.addEventListener("click", () => {
+      console.log("Botón clicado");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+</script>
+  <main id="pdf-viewer"></main>
+  <button id="scrollTopBtn" title="Volver al inicio"></button>
+  <footer>
+    <div class="disclaimer">
+      <p>Este proyecto es una <strong>PRUEBA DE MENÚ DIGITAL</strong> creada solo con fines demostrativos.</p>
+      <a href="https://github.com/LixorG" target="_blank" class="github-btn">© LixorG — Ver en GitHub</a>
+    </div>
+  </footer>
+  <script src="../js/script.js"></script>
+  
+</body>
+</html>
