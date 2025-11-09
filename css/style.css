@@ -1,26 +1,12 @@
 :root {
-  --color-primary: #2b2b2b;
-  --color-accent: #d4a017;
-  --background: #faf8f5;
+  --color-primary: #4e3b2c;     /* texto principal, íconos, botones */
+  --color-accent: #ae633e;      /* botones activos, hover, encabezados */
+  --background: #faf8f5;        /* fondo general */
+  --color-hover: #44623d;       /* hover alternativo, botones secundarios */
+  --color-secondary: #6f5e4d;   /* texto secundario, footer, detalles */
 }
 
-/* Reset general */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  font-family: "Cormorant Garamond", serif;
-  background-color: var(--background);
-  color: var(--color-primary);
-  overflow-x: hidden;
-}
-
-/* ===== Header ===== */
+/* ===== HEADER FIJO ===== */
 #main-header {
   position: fixed;
   top: 0;
@@ -31,16 +17,12 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 8px 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   z-index: 1000;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-#main-header.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
+/* Logo grande arriba a la izquierda */
 .logo-img-large {
   height: 75px;
   width: auto;
@@ -53,6 +35,7 @@ html, body {
   transform: scale(1.05);
 }
 
+/* Botón de menú hamburguesa */
 .menu-toggle {
   font-size: 2rem;
   cursor: pointer;
@@ -65,7 +48,13 @@ html, body {
   transform: scale(1.1);
 }
 
-/* ===== Menú lateral ===== */
+/* Ocultar header al hacer scroll */
+#main-header.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* ===== MENÚ LATERAL ===== */
 .side-menu {
   position: fixed;
   top: 0;
@@ -73,7 +62,7 @@ html, body {
   width: 280px;
   height: 100%;
   background: var(--background);
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: -3px 0 10px rgba(0,0,0,0.2);
   padding: 60px 20px;
   display: flex;
   flex-direction: column;
@@ -86,6 +75,7 @@ html, body {
   right: 0;
 }
 
+/* Botones dentro del menú lateral */
 .side-menu button {
   display: flex;
   align-items: center;
@@ -99,7 +89,7 @@ html, body {
   font-family: "Cormorant Garamond", serif;
   color: var(--color-primary);
   cursor: pointer;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
 }
 
@@ -121,20 +111,168 @@ html, body {
 .side-menu button:hover img {
   transform: scale(1.15);
   filter: brightness(1.2);
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
+/* ===== RESET GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===== PDF viewer ===== */
+html, body {
+  width: 100%;
+  height: auto;
+  font-family: "Cormorant Garamond", serif;
+  background-color: var(--background);
+  color: var(--color-primary);
+  overflow: visible;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ===== HEADER ===== */
+header {
+  background-color: var(--color-accent);
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 10px 0;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ===== LOGO Y TÍTULO ===== */
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.logo-container h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.8rem;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* ===== LAYOUT EN ESCRITORIO ===== */
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8%;
+  }
+
+  .logo-container {
+    justify-content: flex-start;
+  }
+
+  #menu-nav {
+    justify-content: flex-end;
+  }
+
+  .logo-img {
+    height: 55px;
+  }
+
+  .logo-container h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ===== MODO MÓVIL: mostrar solo el logo ===== */
+@media (max-width: 480px) {
+  .logo-container h1 {
+    display: none;
+  }
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+nav button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 26px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+nav button img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  filter: brightness(0.95);
+}
+
+nav button:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: scale(1.08);
+}
+
+nav button:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+  box-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
+
+/* ===== PDF VIEWER ===== */
 #pdf-viewer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
+  height: auto;
   min-height: 80vh;
   padding: 0;
-  margin-top: 90px;
+  margin-top: 80px;
   transition: opacity 0.5s ease;
+  overflow: visible;
 }
 
 canvas {
@@ -142,61 +280,17 @@ canvas {
   max-width: 90vw;
   height: auto;
   margin: 20px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border-radius: 8px;
   transition: opacity 0.5s ease;
 }
 
-/* ===== Overlay de carga ===== */
-#loading-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(250, 248, 245, 0.97);
-  backdrop-filter: blur(3px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  z-index: 9999;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.loading-content {
-  text-align: center;
-  color: var(--color-primary);
-}
-
-#loading-overlay p {
-  font-size: 1.3rem;
-  margin-top: 15px;
-  letter-spacing: 0.5px;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: var(--color-accent);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* ===== Footer ===== */
+/* ===== FOOTER ===== */
 footer {
   background-color: #f0efeb;
   border-top: 2px solid var(--color-accent);
@@ -220,10 +314,150 @@ footer {
   padding: 10px 18px;
   border-radius: 6px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .github-btn:hover {
   background-color: #b48b13;
   transform: scale(1.05);
+}
+/* ===== INDICADOR DE CARGA ===== */
+#loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  color: var(--color-primary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.2rem;
+  gap: 10px;
+  opacity: 0.9;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--color-accent);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+/* ===== OVERLAY DE CARGA ===== */
+#loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(250, 248, 245, 0.97);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-content {
+  text-align: center;
+  color: var(--color-primary);
+  font-family: "Cormorant Garamond", serif;
+}
+
+#loading-overlay p {
+  font-size: 1.3rem;
+  margin-top: 15px;
+  color: var(--color-primary);
+  letter-spacing: 0.5px;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--color-accent);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+.side-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--color-primary);
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.side-menu a img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  filter: brightness(0.95);
+}
+
+.side-menu a:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: scale(1.05);
+}
+
+.side-menu a:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+  box-shadow: 0 0 6px rgba(255,255,255,0.6);
+}
+#scrollTopBtn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
+  background: url(../img/top.png) no-repeat center center;
+  background-size: contain;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  display: none;
+  z-index: 9999;
+}
+
+#scrollTopBtn:hover {
+  transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  #scrollTopBtn {
+    bottom: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+  }
 }
