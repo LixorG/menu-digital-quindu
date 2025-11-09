@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prueba Menú Digital</title>
-  <link rel="icon" type="image/png" href="img/icono.png" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-  <script>
-    pdfjsLib.GlobalWorkerOptions.workerSrc =
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
-  </script>
+  <title>Menú Quindú | Cocina de Salento</title>
+  <link rel="stylesheet" href="css/index.css" />
 </head>
 <body>
+<body class="index-page">
   <header id="main-header">
     <div class="header-left">
       <img src="img/icono.png" alt="Logo Quindú" class="logo-img-large" />
     </div>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
   </header>
-  <nav id="side-menu" class="side-menu">
-    <button onclick="scrollToPage('entradas')">
-      <img src="img/entradas.png" alt="Entradas" />
-      Entradas
-    </button>
-    <button onclick="scrollToPage('platosFuertes')">
-      <img src="img/plato-fuerte.png" alt="Platos Fuertes" />
-      Platos Fuertes
-    </button>
-    <button onclick="scrollToPage('postres')">
-      <img src="img/postres.png" alt="Postres" />
-      Postres
-    </button>
-    <button onclick="scrollToPage('bebidas')">
-      <img src="img/bebidas.png" alt="Bebidas" />
-      Bebidas
-    </button>
-  </nav>
-  <main id="pdf-viewer"></main>
 
-  <!-- Disclaimer -->
+  <main class="landing">
+    <section class="hero">
+      <img src="img/header.png" alt="Imagen de portada" class="hero-img" />
+      <h1 class="hero-title">Bienvenido a Quindú</h1>
+      <p class="hero-subtitle">Cocina de Salento con alma artesanal</p>
+      <a href="menu/Entradas.html" class="hero-btn">Ver el menú</a>
+    </section>
+  </main>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    console.log("Botón scrollTopBtn cargado:", scrollBtn);
+
+    function checkScroll() {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      console.log("ScrollY:", scrollY);
+      if (scrollY > 10) {
+        scrollBtn.style.display = "block";
+        console.log("Botón mostrado");
+      } else {
+        scrollBtn.style.display = "none";
+        console.log("Botón ocultado");
+      }
+    }
+
+    window.addEventListener("scroll", checkScroll);
+    window.addEventListener("load", checkScroll); // por si ya hay scroll al cargar
+
+    scrollBtn.addEventListener("click", () => {
+      console.log("Botón clicado");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+</script>
+  <button id="scrollTopBtn" title="Volver al inicio"></button>
   <footer>
     <div class="disclaimer">
       <p>
@@ -53,7 +64,5 @@
       </a>
     </div>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
