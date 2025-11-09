@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba Menú Digital</title>
+  <link rel="icon" type="image/png" href="img/icono.png" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+  </script>
+</head>
+<body>
+  <header id="main-header">
+    <div class="header-left">
+      <img src="img/icono.png" alt="Logo Quindú" class="logo-img-large" />
+    </div>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+  <nav id="side-menu" class="side-menu">
+    <button onclick="scrollToPage('entradas')">
+      <img src="img/entradas.png" alt="Entradas" />
+      Entradas
+    </button>
+    <button onclick="scrollToPage('platosFuertes')">
+      <img src="img/plato-fuerte.png" alt="Platos Fuertes" />
+      Platos Fuertes
+    </button>
+    <button onclick="scrollToPage('postres')">
+      <img src="img/postres.png" alt="Postres" />
+      Postres
+    </button>
+    <button onclick="scrollToPage('bebidas')">
+      <img src="img/bebidas.png" alt="Bebidas" />
+      Bebidas
+    </button>
+  </nav>
+  <main id="pdf-viewer"></main>
+
+  <!-- Disclaimer -->
+  <footer>
+    <div class="disclaimer">
+      <p>
+        Este proyecto es una <strong>PRUEBA DE MENÚ DIGITAL</strong> creada solo con fines demostrativos.
+        No poseo los derechos de imagen o nombre del restaurante original.
+        Este menú no será distribuido comercialmente por ninguna compañía y está alojado en un subdominio de pruebas internas.
+        El contenido se utiliza únicamente como plantilla para futuros clientes.
+      </p>
+      <a href="https://github.com/LixorG" target="_blank" class="github-btn">
+        © LixorG — Ver en GitHub
+      </a>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
